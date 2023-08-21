@@ -568,3 +568,32 @@ InteractiveFunctions.addFunction("HEADLAND_MANAGEMENT_TOGGLE", {
         return false
     end
 })
+
+-----------------------------
+---FS22_DashboardLive---
+-----------------------------
+
+---FUNCTION_HEADLAND_MANAGEMENT_TOGGLE
+InteractiveFunctions.addFunction("DBL_DARKMODE", {
+    posFunc = function(target, data, noEventSend)
+        local DashboardLive = getExternalModClass("FS22_DashboardLive", "DashboardLive")
+
+        if DashboardLive ~= nil then
+            if target.spec_DashboardLive ~= nil and DashboardLive.DARKMODE ~= nil then
+                DashboardLive.DARKMODE(target, "DBL_DARKMODE")
+            end
+        end
+    end,
+    updateFunc = function(target, data)
+        if target.spec_DashboardLive ~= nil ~= nil then
+            return target.spec_DashboardLive.darkMode
+        end
+        return nil
+    end,
+    isEnabledFunc = function(target, data)
+        if target.spec_DashboardLive ~= nil then
+            return target.spec_DashboardLive.darkModeExists
+        end
+        return false
+    end
+})
