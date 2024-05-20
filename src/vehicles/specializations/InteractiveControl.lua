@@ -678,7 +678,7 @@ function InteractiveControl:onUpdateTick(dt, isActiveForInput, isActiveForInputI
         local isOutdoor = self:isOutdoorActive()
 
         --show aim marker if IC is active and HUD is turned off
-        if (g_currentMission.controlledVehicle == nil or self == g_currentMission.controlledVehicle) and spec.isPlayerInRange or self:isICActive() and g_noHudModeEnabled then
+        if (g_currentMission.controlledVehicle == nil or self == g_currentMission.controlledVehicle) and (spec.isPlayerInRange or self:isICActive() and g_noHudModeEnabled) then
 			renderText(0.5, 0.5, 0.018, "+")
 		end
 
